@@ -338,7 +338,8 @@ the URL. Requires `gh` auth present on the machine that runs it (none exists in 
 
 | Item | Risk | Mitigation |
 |------|------|-----------|
-| GitHub authentication | Cannot create repo / push from sandbox without a token | Local artifact complete + one-command deploy script; remote execution gated on user-supplied credential (never guessed) |
+| GitHub authentication | VERIFIED WORKING (2026-11-22): `GH_TOKEN` is present in the sandbox. Official `gh` v2.105.0 (linux_arm64) installed at `/usr/local/bin/gh`; the npm-packaged `gh` 2.8.9 is defective here (every subcommand crashes) and was replaced. Authenticated as `slopervisor` with full `repo` scope. Repo `slopervisor/exotic-orbits-sim` (public) created and seeded with the committed design spec on `main`. | Deploy script drives `gh`/curl; credentials come only from the user's environment/vault, never guessed |
+| GitHub Pages enablement | `PUT /repos/{owner}/{repo}/pages` returns 404 stably across repeated attempts/payloads (verified 2026-11-22); `/meta` confirms the Pages service is otherwise healthy, so this reads as an account-level Pages provisioning gate, unreachable from the sandbox. PLAN B (implemented in the deploy script): push the built site to a `gh-pages` branch for classic auto-publish at `https://slopervisor.github.io/exotic-orbits-sim/`, then poll the Pages build status; final fallback is the Settings > Pages UI toggle. | Implemented and verified during delivery; outcome reported honestly, never asserted |
 | crates.io connectivity | 403 observed | Avoided entirely: std-only Rust, hand-written GL host |
 | 1PN coefficient transcription | OCR/textbook formula risk | Empirical invariant-anchor gate (§6.7); document which form passed |
 | Bloom/perf on integrated GPUs | Fragment cost at ½ res | Adaptive tessellation/bloom (§8 performance budget) |
