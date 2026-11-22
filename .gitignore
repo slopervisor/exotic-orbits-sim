@@ -1,0 +1,9 @@
+# build outputs
+dist/
+target/
+Cargo.lock
+
+# editor
+*.swp
+.idea/
+.vscode/
