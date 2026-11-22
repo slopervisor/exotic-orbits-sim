@@ -7,3 +7,12 @@ Cargo.lock
 *.swp
 .idea/
 .vscode/
+
+# npm dev dependencies (see package.json)
+node_modules/
+
+# WebAssembly binaries are build artifacts produced under dist/.
+# When served over HTTP, a .wasm must carry Content-Type: application/wasm
+# (or application/wasi-preview1) or browsers refuse the fetch(); kept out
+# of the repository tree so only the bundled/dist copy ships.
+*.wasm

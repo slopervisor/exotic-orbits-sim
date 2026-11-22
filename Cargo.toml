@@ -1,0 +1,17 @@
+[package]
+name = "exotic_orbits_sim"
+version = "0.1.0"
+edition = "2021"
+description = "Exotic few-body gravitational dynamics showcase (std-only WebAssembly physics engine)"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+opt-level = 3
+lto = true
+panic = "abort"
+debug-assertions = false
+
+[dependencies]
+# intentionally empty - zero external crates allowed (design doc §3.1)

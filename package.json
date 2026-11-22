@@ -1,0 +1,13 @@
+{
+  "name": "exotic-orbits-sim",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "dev": "npx serve dist --no-cache-config"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
